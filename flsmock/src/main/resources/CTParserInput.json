@@ -1,0 +1,27 @@
+{
+	"inputFile": "",
+	"setType": "Adapter",
+	"setName": "Adapter_INTF_DIM_E_IPTRANSPORT_CISCO_ct",
+	"actionContents": {
+		"outDir": "/root/ct/sbkafka/lterbs",
+		"maxFilesPerRun": "10000",
+		"dublicateCheck": "true",
+		"thresholdMethod": "more",
+		"inDir": "/root/ct/sbkafka/",
+		"interfaceName": "INTF_DIM_E_CN_CN",
+		"ProcessedFiles.fileNameFormat": "",
+		"minFileAge": "1",
+		"baseDir": "/root/ct/sbkafka/",
+		"archivePeriod": "168",
+		"useZip": "gzip",
+		"loaderDir": "/root/ct/sbkafka/",
+		"parserType": "ct",
+		"doubleCheckAction": "delete",
+		"ProcessedFiles.processedDir": "/root/ct/sbkafka/",
+		"failedAction": "move",
+		"dirThreshold": "0",
+		"workers": "3",
+		"afterParseAction": "delete",
+		"outputFormat": "0"
+	}
+}

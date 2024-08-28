@@ -1,0 +1,92 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: flsmock
+  name: flsmock
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flsmock
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: flsmock
+    spec:
+     imagePullSecrets:
+      - name: test
+      #- name: celeritas7518key
+     initContainers:
+     - name: pem-to-keyandtruststore
+       image: armdocker.rnd.ericsson.se/proj-eniq-dev/flsmock/flsmock:303.0
+       imagePullPolicy: IfNotPresent
+       env:
+       - name: keyfile
+         value: /root/celeritas/security/cert/cliprivkey.pem
+       - name: crtfile
+         value: /root/celeritas/security/cert/clicert.pem
+       - name: ca_bundle
+         value: /root/celeritas/security/rootca/ca.crt
+       - name: keystore_pkcs12
+         value: /root/celeritas/security/keyandtruststore/keystore.pkcs12
+       - name: keystore_jks
+         value: /root/celeritas/security/keyandtruststore/keystore.jks
+       - name: truststore_jks
+         value: /root/celeritas/security/keyandtruststore/truststore.jks
+       - name: password
+         value: password
+       command: ['/bin/bash','-c']
+       args: ["openssl pkcs12 -export -inkey $keyfile -in  $crtfile -out $keystore_pkcs12 -password pass:$password && keytool -importkeystore -noprompt -srckeystore $keystore_pkcs12 -srcstoretype pkcs12 -destkeystore $keystore_jks -storepass $password -srcstorepass $password && keytool -import -noprompt -keystore $truststore_jks  -file $ca_bundle -storepass password -alias rootCA"]
+       volumeMounts:
+        -
+          mountPath: /root/celeritas/security/cert
+          name: etl-volume
+          readOnly: true
+        -
+          mountPath: /root/celeritas/security/rootca
+          name: serverca
+          readOnly: true
+        - 
+          name: keyandtruststore-volume
+          mountPath: /root/celeritas/security/keyandtruststore
+     volumes:
+     - name: etl-volume
+       secret:
+         secretName: etl-secret-mdc
+     - name: serverca
+       secret:
+         secretName: eric-sec-sip-tls-trusted-root-cert
+     - name: keyandtruststore-volume
+       emptyDir: {}
+
+     containers:
+     -  name: flsmock
+        image: armdocker.rnd.ericsson.se/proj-eniq-dev/flsmock/flsmock:303.0
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: keystore_jks
+          value: /root/celeritas/security/keyandtruststore/keystore.jks
+        - name: truststore_jks
+          value: /root/celeritas/security/keyandtruststore/truststore.jks
+        - name: password
+          value: password
+        - name: APP_PORT
+          value: "9778"
+        - name: APP_HOME
+          value: "/root/designteam1/flsmck"
+        - name: APP_STARTUP
+          value: "com.ericsson.eniq.flsmock.FlsmockApplication" 
+        resources:
+         limits:
+           # cpu: 500m
+         requests:
+             cpu: 1
+        ports:
+        - containerPort: 9778
+        volumeMounts:
+        - mountPath: /root/celeritas/security/keyandtruststore
+          name: keyandtruststore-volume

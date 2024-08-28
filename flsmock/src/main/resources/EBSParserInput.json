@@ -1,0 +1,33 @@
+{
+	"inputFile": "",
+	"setType": "Adapter",
+	"setName": "Adapter_INTF_PM_E_EBSW_ebs",
+	"tp": "INTF_PM_E_EBSS",
+	"actionContents": {
+		"outDir": "/root/designteam1/EBS",
+"maxFilesPerRun": "5000",
+"dublicateCheck": "true",
+"thresholdMethod": "more",
+"x3GPPParser.FillEmptyMOID": "false",
+"inDir": "/root/designteam1/EBS",
+"interfaceName": "INTF_PM_E_EBSS",
+"EBSParser.readVendorIDFrom": "file",
+"ProcessedFiles.fileNameFormat": "A(.{13}).+",
+"x3GPPParser.FillEmptyMOIDValue": "0",
+"minFileAge": "1",
+"x3GPPParser.FillEmptyMOIDStyle": "inc",
+"baseDir": "/root/designteam1/EBS",
+"useZip": "gzip",
+"archivePeriod": "168",
+"loaderDir": "/root/designteam1/EBS",
+"parserType": "ebs",
+"doubleCheckAction": "delete",
+"x3GPPParser.vendorIDMask": "((.+?))\\..*",
+"ProcessedFiles.processedDir": "/root/designteam1/EBS",
+"failedAction": "move",
+"x3GPPParser.readVendorIDFrom": "data",
+"dirThreshold": "0",
+"workers": "3",
+"afterParseAction": "delete"
+	}
+}

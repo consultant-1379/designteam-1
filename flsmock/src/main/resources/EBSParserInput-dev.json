@@ -1,0 +1,33 @@
+{
+	"inputFile": "H:\\git\\testing\\ebs\\A20210104.1000+0100-1015+0100_SubNetwork=ONRM_RootMo,SubNetwork=RNC01,MeContext=RNC01_statsfile_-_1.xml",
+	"setType": "Adapter",
+	"setName": "Adapter_INTF_PM_E_EBSW_ebs",
+	"tp": "INTF_PM_E_EBSS",
+	"actionContents": {
+		"outDir": "H:\\git\\testing\\ebs\\output",
+"maxFilesPerRun": "5000",
+"dublicateCheck": "true",
+"thresholdMethod": "more",
+"x3GPPParser.FillEmptyMOID": "false",
+"inDir": "H:\\git\\testing\\ebs",
+"interfaceName": "INTF_PM_E_EBSS",
+"EBSParser.readVendorIDFrom": "file",
+"ProcessedFiles.fileNameFormat": "A(.{13}).+",
+"x3GPPParser.FillEmptyMOIDValue": "0",
+"minFileAge": "1",
+"x3GPPParser.FillEmptyMOIDStyle": "inc",
+"baseDir": "H:\\git\\testing\\ebs",
+"useZip": "gzip",
+"archivePeriod": "168",
+"loaderDir": "H:\\git\\testing\\ebs",
+"parserType": "ebs",
+"doubleCheckAction": "delete",
+"x3GPPParser.vendorIDMask": "((.+?))\\..*",
+"ProcessedFiles.processedDir": "H:\\git\\testing\\ebs\\processed",
+"failedAction": "move",
+"x3GPPParser.readVendorIDFrom": "data",
+"dirThreshold": "0",
+"workers": "3",
+"afterParseAction": "delete"
+	}
+}

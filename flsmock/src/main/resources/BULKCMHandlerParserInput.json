@@ -1,0 +1,9 @@
+{
+	"inputFile": "",
+	"setType": "Adapter",
+	"setName": "Adapter_DC_E_BCD_bulkcm",
+	"actionContents": {
+		"outDir": "/root/dataingress/bulkcmfiles",
+		"outputFormat": "0"
+	}
+}

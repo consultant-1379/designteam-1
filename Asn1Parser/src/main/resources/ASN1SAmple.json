@@ -1,0 +1,33 @@
+{
+  "parserList": [
+    {
+    "inputFile":"H:\\Asn1_Input\\C20210129.1145-20210129\\C20210129.1145-20210129.1200_BAB07%3A1008",
+    "tp":"DC_E_BSS_APG",
+    "setType":"Adapter",
+    "setName":"Adapter_INTF_DC_E_BSS_APG_asn1",
+    "actionContents":{
+			"outDir" : "H:\\Asn1_Input\\",
+			"maxFilesPerRun" : "1000",
+			"dublicateCheck" : "true",
+			"thresholdMethod" :"more",
+			"inDir" : "",
+			"interfaceName" : "INTF_DC_E_BSS_APG",
+			"ProcessedFiles.fileNameFormat" : "TRDIP_(.{13}).+",
+			"minFileAge" : "1",
+			"baseDir" : "H:\\Asn1_Input\\",
+			"useZip" : "false",
+			"nullValue" : "",
+			"archivePeriod" : "168",
+			"loaderDir" : "H:\\Asn1_Input\\",
+			"parserType" : "eniqasn1",
+			"vendorIDMask" : "(.+?\\=).+",
+			"doubleCheckAction" : "move",
+			"ProcessedFiles.processedDir" : "H:\\Asn1_Input\\",
+			"failedAction" : "move",
+			"dirThreshold" : "0",
+			"workers" : "3",
+			"afterParseAction" : "delete"
+		}
+	}
+	  ]
+}
